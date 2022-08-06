@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  height: 12.5rem;
+  background: #0d0d0d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  background: transparent;
+  width: 7.875rem;
+  height: 3rem;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  padding: 0px;
+  gap: 8px;
+
+  position: absolute;
+  width: 46rem;
+  height: 3.375rem;
+  left: calc(50% - 736px/2);
+  top: 10.8125rem;
+  background: transparent;
+
+}
