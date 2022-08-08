@@ -1,12 +1,16 @@
 import logo from './assets/logo.svg';
-import { Task } from './components/Task';
 import { Empty } from './components/Empty';
 import { Todo } from './components/Todo';
 import { Counters } from './components/Counters';
 
 import styles from './App.module.css';
 import './global.css';
+
+
+
+
 export default function App() {
+
 
 
   return (
@@ -18,13 +22,10 @@ export default function App() {
         />
       </div>
 
-      <div className={styles.inline}>
-        <Task />
-      </div>
-
       <Counters />
-      {/* <Empty /> */}
       <Todo />
+      {/* <Empty /> */}
+
     </>
   )
 }
