@@ -4,39 +4,32 @@ import { useState } from 'react';
 import styles from './Todo.module.css';
 
 
-const taskList = [
-  {
-    id: 1,
-    content: 'primeira tarefa'
-  },
-  {
-    id: 2,
-    content: 'segunda tarefa'
-  },
-  {
-    id: 3,
-    content: 'terceira tarefa'
-  },
-]
 
 export function Todo() {
 
-  const [taskList, setTaskList] = useState([])
-  const [input, setInput] = useState([])
+  const [tasks, setTasks] = useState(['Tarefa estado'])
+
+  const [newTaskText, setNewTaskText] = useState('')
 
   function handleCreateNewTask() {
     event.preventDefault()
 
-    setTaskList([...taskList, taskList.length + 1])
-    setInput([...input, input.length + 1])
+    setTasks([...tasks, newTaskText]);
+    setNewTaskText('')
+
+
+    console.log(newTaskText);
   }
 
   return (
     <>
       <div className={styles.inline}>
-        <input
-          placeholder='Escreva aqui sua tarefa'
+
+        <textarea
           className={styles.input}
+          name='inputTask'
+          placeholder='Escreva aqui sua tarefa'
+          required
         />
         <button
           className={styles.button}
@@ -51,19 +44,20 @@ export function Todo() {
         </button>
       </div>
 
-
       <div className={styles.header}>
-        {}
         <div className={styles.label}>
+
           <label
-            className={styles.labelCheck}
-          />
+            className={styles.labelCheck}>
+
+          </label>
           <p className={styles.paragraph}>
-            {taskList}
+            {tasks}
           </p>
           <label className={styles.labelTrash}>
             <Trash size={20} />
           </label>
+
         </div>
       </div>
     </>
