@@ -1,13 +1,28 @@
-import { Trash } from 'phosphor-react';
 import { PlusCircle } from 'phosphor-react';
 import { useState } from 'react';
+import { Card } from './Card';
 import styles from './Todo.module.css';
 
+
+const posts = [
+  {
+    id: 1,
+    taskText: 'texto alternativo de testes 1'
+  },
+  {
+    id: 2,
+    taskText: 'texto alternativo de testes 2'
+  },
+  {
+    id: 3,
+    taskText: 'texto alternativo de testes 3'
+  }
+];
 
 
 export function Todo() {
 
-  const [tasks, setTasks] = useState(['Tarefa estado'])
+  const [tasks, setTasks] = useState([''])
 
   const [newTaskText, setNewTaskText] = useState('')
 
@@ -16,10 +31,12 @@ export function Todo() {
 
     setTasks([...tasks, newTaskText]);
     setNewTaskText('')
-
-
-    console.log(newTaskText);
   }
+
+  function handleNewTaskChange() {
+
+  }
+
 
   return (
     <>
@@ -29,7 +46,7 @@ export function Todo() {
           className={styles.input}
           name='inputTask'
           placeholder='Escreva aqui sua tarefa'
-          required
+          onChange={handleNewTaskChange}
         />
         <button
           className={styles.button}
@@ -44,22 +61,17 @@ export function Todo() {
         </button>
       </div>
 
-      <div className={styles.header}>
-        <div className={styles.label}>
 
-          <label
-            className={styles.labelCheck}>
+      {posts.map(post => {
+        return (
+          <Card
+            key={post.id}
+            taskText={post.taskText}
+            value={newTaskText}
+          />
+        )
+      })}
 
-          </label>
-          <p className={styles.paragraph}>
-            {tasks}
-          </p>
-          <label className={styles.labelTrash}>
-            <Trash size={20} />
-          </label>
-
-        </div>
-      </div>
     </>
   );
 }
