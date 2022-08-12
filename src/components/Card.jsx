@@ -2,7 +2,12 @@ import { Trash } from 'phosphor-react';
 
 import styles from './Card.module.css'
 
-export function Card({ taskText, value }) {
+export function Card({ value, handle }) {
+
+
+  
+  
+  
   return (
     <div className={styles.header}>
 
@@ -12,10 +17,12 @@ export function Card({ taskText, value }) {
 
         </label>
         <p className={styles.paragraph}>
-          {taskText}
+          {value} 
         </p>
         <label className={styles.labelTrash}>
-          <Trash size={20}
+          <Trash
+            onClick={handle}
+            size={20}
           />
         </label>
       </div>

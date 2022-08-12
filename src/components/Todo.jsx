@@ -4,53 +4,54 @@ import { Card } from './Card';
 import styles from './Todo.module.css';
 
 
-const posts = [
-  {
-    id: 1,
-    taskText: 'texto alternativo de testes 1'
-  },
-  {
-    id: 2,
-    taskText: 'texto alternativo de testes 2'
-  },
-  {
-    id: 3,
-    taskText: 'texto alternativo de testes 3'
-  }
-];
 
 
 export function Todo() {
 
-  const [tasks, setTasks] = useState([''])
+  const [task, setTask] = useState('');
 
-  const [newTaskText, setNewTaskText] = useState('')
+  const [listTasks, setListTasks] = useState([]);
 
-  function handleCreateNewTask() {
-    event.preventDefault()
+  function handleAddTask() {
+    if (!task) return alert('Digite uma tarefa!');
 
-    setTasks([...tasks, newTaskText]);
-    setNewTaskText('')
+    const newTask = {
+      id: Math.random(),
+      task: task,
+    }
+
+    setListTasks([...listTasks, newTask]);
+    setTask('')
   }
 
-  function handleNewTaskChange() {
-
+  function removeTask(taskToRemove) {
+    const tasksWithoutRemovedOne = listTasks.filter(task => {
+      return task !== taskToRemove;
+    })
+    
+    setTask([...tasksWithoutRemovedOne]);
+    
+    console.log(tasksWithoutRemovedOne);
   }
+
 
 
   return (
     <>
       <div className={styles.inline}>
 
-        <textarea
-          className={styles.input}
-          name='inputTask'
-          placeholder='Escreva aqui sua tarefa'
-          onChange={handleNewTaskChange}
-        />
+        <label>
+
+          <input
+            value={task}
+            className={styles.input}
+            placeholder='Escreva aqui sua tarefa'
+            onChange={(e) => setTask(e.target.value)}
+          />
+        </label>
         <button
+          onClick={handleAddTask}
           className={styles.button}
-          onClick={handleCreateNewTask}
         >
           Criar
           <PlusCircle
@@ -62,15 +63,16 @@ export function Todo() {
       </div>
 
 
-      {posts.map(post => {
+      {listTasks.map((task) => {
         return (
           <Card
-            key={post.id}
-            taskText={post.taskText}
-            value={newTaskText}
+            key={task.id}
+            value={task.task}
+            handle={removeTask}
           />
         )
-      })}
+      })
+      }
 
     </>
   );
