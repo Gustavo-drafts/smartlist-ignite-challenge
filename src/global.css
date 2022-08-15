@@ -6,7 +6,25 @@
   color: var(--white);
   position: relative;
   font-family: inter, sans-serif;
+  font-size: 16px;
 }
+
+header , form {
+  text-align: center;
+}
+
+
+header {
+  height: 12.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--gray-700);
+}
+
+/* main {} */
 
 :root {
   --white: #ffffff;
