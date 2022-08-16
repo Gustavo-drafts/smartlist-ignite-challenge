@@ -4,12 +4,26 @@ export const DivStyle = styled.div`
 
 width: 46.875rem;
 
-padding: 0.5rem;
-margin-top: 5rem;
-margin-left: calc(105% - 1440px);
+padding-bottom: 0.5rem;
+border-bottom: solid 1px var(--gray-400);
 
 display: flex;
 justify-content: space-between;
+
+strong {
+  color: var(--gray-300)
+}
+
+strong span {
+  width: 1.5rem;
+
+  padding: 0 10px 0 10px;
+  margin-left: 0.2rem;
+
+  border-radius: 16px;  
+  
+  background: var(--gray-400);
+}
 `;
 
 export function Counter() {
@@ -17,11 +31,11 @@ export function Counter() {
     <DivStyle>
       <strong>
         Tarefas criadas
-        0
+        <span>0</span>
       </strong>
       <strong>
         Concluídas
-        0
+        <span>0</span>
       </strong>
     </DivStyle>
   )

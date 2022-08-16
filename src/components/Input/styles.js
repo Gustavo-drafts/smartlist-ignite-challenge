@@ -10,7 +10,7 @@ export const FormStyle = styled.form`
   align-items: center;
 
 
-  margin-left: calc(105% - 1440px);
+  /* margin-left: calc(105% - 1440px); */
   background: transparent;
   
   margin-top: -27px;
