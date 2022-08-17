@@ -33,7 +33,7 @@ export const FormStyle = styled.form`
 `;
 
 
-export const LinkStyle = styled.a`
+export const BtnStyle = styled.button`
 
   width: 5.625rem;
   height: 3.25rem;
@@ -44,6 +44,7 @@ export const LinkStyle = styled.a`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   
   
   background: var(--blue-200);

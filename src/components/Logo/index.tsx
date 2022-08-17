@@ -1,5 +1,10 @@
+import React from "react";
 import styled from "styled-components";
-import logo from "../../assets/logo.svg";
+
+
+type LogoType = { 
+  logo?: '../../assets/logo.svg';
+}
 
 
 export const LogoStyle = styled.img`
@@ -8,7 +13,7 @@ export const LogoStyle = styled.img`
 `;
 
 
-export function Logo() {
+export function Logo({logo}: LogoType) {
   return (
     <LogoStyle src={logo} />
   )

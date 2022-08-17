@@ -1,3 +1,4 @@
+import React from 'react';
 import { Counter } from './components/Counter';
 import { Input } from './components/Input';
 import { Logo } from './components/Logo';
@@ -11,9 +12,9 @@ export default function App() {
       <header>
         <Logo />
       </header>
-      <form>
+      <article>
         <Input />
-      </form>
+      </article>
       <main>
         <Counter />
       </main>
