@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const FormStyle = styled.form`
+export const FormStyle = styled.div`
   
   position: fixed;
   
@@ -15,21 +15,21 @@ export const FormStyle = styled.form`
   
   margin-top: -27px;
   gap: 8px;
-  
-  input {
-    width: 39.875rem;
-    height: 3.375rem;
+`;
 
-    padding: 1rem;
+  export const InputStyle = styled.input`
+  width: 39.875rem;
+  height: 3.375rem;
 
-    border: 1px solid var(--gray-700);
-    border-radius: 8px;
-  
-  
+  padding: 1rem;
+
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+
+
   font-size: 1rem;
   background: var(--gray-500);
   color: var(--gray-200);
-}
 `;
 
 

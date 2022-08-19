@@ -27,16 +27,24 @@ strong span {
 }
 `;
 
-export function Counter() {
+interface CounterProps {
+  done: number;
+  created: number;
+}
+
+export function Counter({ done = 0, created = 0}: CounterProps) {
+
+
+
   return (
     <DivStyle>
       <strong>
         Tarefas criadas
-        <span>0</span>
+        <span>{created}</span>
       </strong>
       <strong>
         Concluídas
-        <span>0</span>
+        <span>{done}</span>
       </strong>
     </DivStyle>
   )

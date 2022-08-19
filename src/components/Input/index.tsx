@@ -1,24 +1,31 @@
 
-import React from 'react'
-import { BtnStyle, FormStyle } from './styles'
+import React, { InputHTMLAttributes } from 'react'
+import { BtnStyle, FormStyle, InputStyle } from './styles'
+
+import { Task } from '../../@types/tasks';
+
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  btn?: () => void,
+}
 
 
 
 
+export function Input({ btn, ...props }: InputProps ) {
 
-export function Input() {
+
+
+
 
 
   return (
-    <>
-      <FormStyle>
-        <input onChange={() => { }} type="text" />
+    <FormStyle>      
+      <InputStyle  {...props} />
 
-
-        <BtnStyle onClick={() => { }} >
-          Criar +
-        </BtnStyle>
-      </FormStyle>
-    </>
+      <BtnStyle onClick={btn}>
+        Criar +
+      </BtnStyle>
+    </FormStyle>
   )
 }

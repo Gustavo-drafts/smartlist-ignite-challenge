@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import logoImg from "../../assets/logo.svg"
 
-
-type LogoType = { 
-  logo?: '../../assets/logo.svg';
-}
 
 
 export const LogoStyle = styled.img`
   background: transparent;
-  margin-top: 4.5rem;
 `;
 
 
-export function Logo({logo}: LogoType) {
+export function Logo() {
   return (
-    <LogoStyle src={logo} />
+    <LogoStyle src={logoImg} />
   )
 }
