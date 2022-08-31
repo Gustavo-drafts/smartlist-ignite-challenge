@@ -1,0 +1,50 @@
+.header {
+  width: 100vw;
+  height: 30vh;
+  background: var(--gray-700)
+}
+
+
+.header img {
+  background: transparent;
+  margin-top: 3rem;
+  margin-left: 50vw;
+}
+
+
+.container-input {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+input,
+.label-text {
+  width: 39.875rem;
+  height: 3.375rem;
+
+  padding: 1rem;
+
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+
+  display: flex;
+  text-align: center;
+  
+
+  font-size: 1rem;
+  background: var(--gray-500);
+  color: var(--gray-200);
+}
+
+.label-text {
+  justify-content: space-between;
+}
+
+

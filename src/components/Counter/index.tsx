@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components"
 
+
+interface CounterProps {
+  done: number;
+  created: number;
+}
+
+
 export const DivStyle = styled.div`
 
 width: 46.875rem;
@@ -27,13 +34,10 @@ strong span {
 }
 `;
 
-interface CounterProps {
-  done: number;
-  created: number;
-}
 
-export function Counter({ done = 0, created = 0}: CounterProps) {
+export function Counter({ done = 0, created = 0 }: CounterProps) {
 
+  
 
 
   return (
