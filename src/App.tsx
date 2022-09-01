@@ -14,9 +14,10 @@ export default function App() {
   }
 
   function handleSubmitTask() {
-    inputContent ? 
-    setTasks([...tasks, inputContent]) : validateTask()
-    setInputContent('') 
+    event?.preventDefault()
+    inputContent ?
+      setTasks([...tasks, inputContent]) : validateTask()
+    setInputContent('') // clean text box
   }
 
   function handleDeleteTask(value: string) {
@@ -29,14 +30,18 @@ export default function App() {
         <img src={Logo} />
       </div>
 
+
+
       <div className='container-input'>
         <input
           type='text'
+          // captured of 'setInputContent' => 'inputContent'
           onChange={(e) => setInputContent(e.target.value)}
-          
+
         />
         <button
           className='btn-vai'
+          // submmit for tasks<string[inputContent]>
           onClick={handleSubmitTask} >
           Vai
         </button>
@@ -44,8 +49,11 @@ export default function App() {
 
       <div className='list-group'>
 
+
+        {/* Mapping of task<string[]>, [index] -------------------------------- */}
         {tasks.map((task, index) => {
           return (
+            // -------------------
             <ul key={index}>
               <li>
                 <div className='label-text'>
