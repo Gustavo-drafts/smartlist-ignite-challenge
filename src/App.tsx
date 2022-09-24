@@ -1,70 +1,84 @@
-import React, { useState } from 'react';
-import Logo from './assets/logo.svg';
-import "./styles/global.css"
-import './styles/App.css'
+import { PlusCircle } from "phosphor-react";
+import React from "react";
+import { FormEvent, useState } from "react"
+import Imagelogo from './assets/logo.svg';
+import { Task } from "./components/Task";
+import { AppContainer, AppFormContainer, AppTitle, TaskContainer, TasksCount } from "./styles/App";
 
-export default function App() {
-  const [tasks, setTasks] = useState<string[]>([])
-  const [inputContent, setInputContent] = useState('')
+export interface ITask {
+  id: string,
+  title: string,
+  isCompleted: boolean
+}
 
-  function validateTask() {
-    if (inputContent === '') {
-      return alert('Invalid task')
-    }
+
+export default function App({ id }: ITask) {
+
+  const [newTask, setNewTask] = useState("")
+  const [tasks, setTasks] = useState<ITask[]>([])
+
+  const tasksQuantity = tasks.length
+  const completedTasks = tasks.filter(task => task.isCompleted).length
+
+  function handleCreateNewTask(e: FormEvent) {
+    e.preventDefault()
+    setTasks([...tasks, {
+      id: crypto.randomUUID(),
+      title: newTask,
+      isCompleted: false
+    }])
   }
 
-  function handleSubmitTask() {
-    event?.preventDefault()
-    inputContent ?
-      setTasks([...tasks, inputContent]) : validateTask()
-    setInputContent('') // clean text box
+  function handleDeleteTask(taskToDelete: string) {
+    const updatedTasks = tasks.filter(task => task.id !== taskToDelete)
+
+    setTasks(updatedTasks)
   }
 
-  function handleDeleteTask(value: string) {
-    setTasks(tasks.filter((task) => task !== value))
+  function toggleTaskCompletedById(taskId: string) {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted
+        };
+      }
+      return task
+    })
+
+    setTasks(newTasks)
   }
+
 
   return (
-    <>
-      <div className='header'>
-        <img src={Logo} />
-      </div>
+    <AppContainer>
+      <AppTitle>
+        <img src={Imagelogo} alt="todo-list" />
+      </AppTitle>
 
-
-
-      <div className='container-input'>
+      <AppFormContainer onSubmit={handleCreateNewTask}>
         <input
           type='text'
-          // captured of 'setInputContent' => 'inputContent'
-          onChange={(e) => setInputContent(e.target.value)}
-
+          placeholder='Adicione uma nova tarefa'
+          onChange={e => setNewTask(e.target.value)}
         />
-        <button
-          className='btn-vai'
-          // submmit for tasks<string[inputContent]>
-          onClick={handleSubmitTask} >
-          Vai
+        <button type='submit'>
+          Criar
+          <PlusCircle size={20} />
         </button>
-      </div>
+      </AppFormContainer>
 
-      <div className='list-group'>
+      <TaskContainer>
+        <TasksCount>
+          <h4>Tarefas Criadas <span>{tasksQuantity}</span></h4>
+          <h4>Concluídas <span>{tasksQuantity !== 0 ? `${completedTasks} de ${tasksQuantity}` : 0}</span></h4>
+        </TasksCount>
 
-
-        {/* Mapping of task<string[]>, [index] -------------------------------- */}
-        {tasks.map((task, index) => {
-          return (
-            // -------------------
-            <ul key={index}>
-              <li>
-                <div className='label-text'>
-                  {task}
-                  <label onClick={() => handleDeleteTask(task)} >Remove All</label>
-                </div>
-              </li>
-            </ul>
-          )
+        {tasks.map(task => {
+          return <Task key={id} task={task} onDelete={handleDeleteTask} onConplete={toggleTaskCompletedById} />
         })}
-      </div>
-    </>
+
+      </TaskContainer>
+    </AppContainer>
   )
 }
